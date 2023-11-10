@@ -1,0 +1,27 @@
+version: '3.1'
+
+services:
+  db:
+    image: postgres
+    environment:
+      POSTGRES_USER: kis
+      POSTGRES_PASSWORD: kis
+      POSTGRES_DB: kis
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    ports:
+      - '4607:5432'
+
+  admin:
+    image: adminer
+    restart: always
+    depends_on:
+      - db
+    ports:
+      - '9010:8080'
+    environment:
+      ADMINER_PLUGINS: 'tables-filter tinymce'
+      ADMINER_DESIGN: dracula
+
+volumes:
+  db_data:
