@@ -12,8 +12,8 @@ export function CasePage() {
   const [caseId] = useState('')
 
   useEffect(() => {
-    if (cases.length > 0) {
-      getCases({ caseId })
+    if (cases.length > 0 && /^\d+$/.test(caseId)) {
+      getCases({ caseId: Number(caseId) })
     } else {
       getCases({})
     }
@@ -26,9 +26,10 @@ export function CasePage() {
       getCases({})
       return
     }
-    // if (isUUID(caseId)) {
-    //   getCases({ caseId })
-    // }
+    const isNumber = /^\d+$/.test(caseId)
+    if (isNumber) {
+      getCases({ caseId: Number(caseId) })
+    }
   }, 1_000)
 
   return (
@@ -46,7 +47,7 @@ export function CasePage() {
           {/* head */}
           <thead>
             <tr>
-              <th></th>
+              <th>Case ID</th>
               <th>Patient ID</th>
               <th>Arrived by</th>
               <th></th>

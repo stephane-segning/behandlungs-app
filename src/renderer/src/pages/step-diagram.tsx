@@ -16,9 +16,11 @@ export function StepDiagram() {
   const steps = useSelector(selectDbSteps)
   const edges = useSelector(selectDbEdges)
 
-  const { caseId } = useParams<{ caseId: string }>()
+  const { caseId: c } = useParams<{ caseId: string }>()
+  const caseId = c ? parseInt(c) : undefined
+
   useEffect(() => {
-    if (caseId === '') {
+    if (!caseId) {
       return
     }
 
@@ -28,7 +30,7 @@ export function StepDiagram() {
   const flowElements = useMemo(
     () =>
       steps.map((step, index) => ({
-        id: step.flow?.id,
+        id: step.flow?.id + '',
         type: 'custom',
         data: step,
         position: { x: 0, y: index * 100 }
@@ -50,9 +52,9 @@ export function StepDiagram() {
       .map(
         (edge) =>
           ({
-            id: edge.id,
-            source: edge.startNode.id,
-            target: edge.endNode.id,
+            id: edge.id + '',
+            source: edge.startNode.id + '',
+            target: edge.endNode.id + '',
             // animated: true,
             type: 'floating',
             markerEnd: { type: MarkerType.Arrow },
