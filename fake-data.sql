@@ -14,18 +14,12 @@ CREATE TABLE "public"."case_steps"
 ) WITH (oids = false);
 
 INSERT INTO "case_steps" ("step_id", "data", "case_id", "flow_id")
-VALUES (876790542, '{}', 876790545,
-        876790543),
-       (876790544, '{}', 876790545,
-        876790545),
-       (876790546, '{}', 876790545,
-        876790547),
-       (876790548, '{}', 876790545,
-        876790549),
-       (876790551, '{"save_zone": "papier-form"}', 876790545,
-        876790554),
-       (876792554, '{"save_zone": "formula"}', 876790545,
-        876792555);
+VALUES (876790542, '{}', 876790545, 876790543),
+       (876790544, '{}', 876790545, 876790545),
+       (876790546, '{}', 876790545, 876790547),
+       (876790548, '{}', 876790545, 876790549),
+       (876790551, '{"save_zone": "papier-form"}', 876790545, 876790554),
+       (876792554, '{"save_zone": "formula"}', 876790545, 876792555);
 
 DROP TABLE IF EXISTS "cases";
 DROP SEQUENCE IF EXISTS cases_case_id_seq;
@@ -95,22 +89,14 @@ CREATE TABLE "public"."flow_edges"
 ) WITH (oids = false);
 
 INSERT INTO "flow_edges" ("edge_id", "name", "start_node_id", "end_node_id")
-VALUES (573392129, 'To registration', 876790543,
-        876790554),
-       (573392132, 'To registration', 276792125,
-        876790554),
-       (573392134, 'To data save', 876790554,
-        876792555),
-       (573392135, 'To first observation', 876792555,
-        876790545),
-       (573392136, 'To fast registration', 876792125,
-        876790545),
-       (571339213, 'Need more dedicated analysis', 876790545,
-        876790547),
-       (571309311, 'Can treat', 876790547,
-        876790549),
-       (571309315, 'Can treat simply', 876790545,
-        876790549);
+VALUES (573392129, 'To registration', 876790543, 876790554),
+       (573392132, 'To registration', 276792125, 876790554),
+       (573392134, 'To data save', 876790554, 876792555),
+       (573392135, 'To first observation', 876792555, 876790545),
+       (573392136, 'To fast registration', 876792125, 876790545),
+       (571339213, 'Need more dedicated analysis', 876790545, 876790547),
+       (571309311, 'Can treat', 876790547, 876790549),
+       (571309315, 'Can treat simply', 876790545, 876790549);
 
 DROP TABLE IF EXISTS "flow_element_types";
 DROP SEQUENCE IF EXISTS flow_element_types_type_id_seq;
