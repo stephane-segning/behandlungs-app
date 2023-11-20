@@ -16,8 +16,8 @@ CREATE TABLE "public"."case_steps"
 INSERT INTO "case_steps" ("step_id", "data", "case_id", "flow_id")
 VALUES (876790542, '{}', 876790545, 876790543),
        (876790544, '{}', 876790545, 876790545),
-       (876790546, '{}', 876790545, 876790547),
-       (876790548, '{}', 876790545, 876790549),
+       (876790546, '{"save_zone": "digital", "digital_type": "kis"}', 876790545, 876790547),
+       (876790548, '{"save_zone": "digital", "digital_type": "excel"}', 876790545, 876790549),
        (876790551, '{"save_zone": "papier-form"}', 876790545, 876790554),
        (876792554, '{"save_zone": "formula"}', 876790545, 876792555);
 
