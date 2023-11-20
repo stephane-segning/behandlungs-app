@@ -22,8 +22,8 @@ export class FlowCaseStepView {
   @Column('text')
   data: string
 
-  @Column({ name: 'case_id', type: 'uuid' })
-  caseId: string
+  @Column({ name: 'case_id', type: 'integer' })
+  caseId: number
 
   @ManyToOne(() => CaseEntity, { eager: true })
   @JoinColumn({ name: 'case_id' })

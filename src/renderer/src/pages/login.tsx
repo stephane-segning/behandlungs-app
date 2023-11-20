@@ -6,7 +6,7 @@ import { useEffect } from 'react'
 import { DatabaseConnectionListItem } from '../components/database-connection-list-item'
 
 export const LoginPage = () => {
-  const { connect, disconnect, connections, getConnections } = useDb()
+  const { connect, disconnect, connections, removeConnection, getConnections } = useDb()
   const navigate = useNavigate()
 
   useEffect(() => {
@@ -17,6 +17,11 @@ export const LoginPage = () => {
   const login = async (values: DatabaseFormValues) => {
     await connect(values)
     navigate('/')
+  }
+
+  const deleteOne = async (values: DatabaseFormValues) => {
+    await removeConnection(values.id!)
+    getConnections()
   }
 
   return (
@@ -30,7 +35,12 @@ export const LoginPage = () => {
           <h2 className="text-xl font-bold">Verbindungen</h2>
           <ul className="list-none list-inside">
             {connections.map((connection, index) => (
-              <DatabaseConnectionListItem key={index + '-conn'} {...connection} onClick={login} />
+              <DatabaseConnectionListItem
+                key={index + '-conn-' + connection.id}
+                {...connection}
+                onClick={login}
+                onDelete={() => deleteOne(connection)}
+              />
             ))}
           </ul>
         </div>

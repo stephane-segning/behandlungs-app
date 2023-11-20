@@ -1,26 +1,26 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import { DatabaseFormValues } from '../models/db-form'
-import log from 'electron-log/renderer';
+import log from 'electron-log/renderer'
 
 export interface SearchOption {
-  caseId?: string
+  caseId?: number
 }
 
 // First, create the thunk
 export const connectToDb = createAsyncThunk(
   'db/connectToDb',
   async (values: DatabaseFormValues) => {
-    log.log('connectToDb');
+    log.log('connectToDb')
     const status: boolean = await window.electron.ipcRenderer.invoke('db-connect', values)
-    log.log('connectToDb status', status);
+    log.log('connectToDb status', status)
     return status
   }
 )
 
 export const disconnectFromDb = createAsyncThunk('db/disconnectFromDb', async () => {
-  log.log('disconnectFromDb');
+  log.log('disconnectFromDb')
   const status: boolean = await window.electron.ipcRenderer.invoke('db-disconnect')
-  log.log('disconnectFromDb status', status);
+  log.log('disconnectFromDb status', status)
   return status
 })
 

@@ -5,4 +5,5 @@ export interface DatabaseFormValues {
   username: string
   password: string
   database: string
+  id?: string
 }

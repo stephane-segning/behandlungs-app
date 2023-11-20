@@ -46,7 +46,7 @@ export function initDb() {
   })
 
   interface SearchOption {
-    caseId?: string
+    caseId?: number
   }
 
   ipcMain.handle('db-get-flow-case-step-views', async (_, searchOption: SearchOption) => {

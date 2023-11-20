@@ -3,7 +3,7 @@ import { FlowChartElementEntity } from './flow-chart-element.entity'
 
 @Entity({ name: 'flow_edges' })
 export class FlowEdgeEntity {
-  @PrimaryGeneratedColumn('uuid', { name: 'edge_id' })
+  @PrimaryGeneratedColumn('increment', { name: 'edge_id' })
   id: string
 
   @ManyToOne(() => FlowChartElementEntity, { eager: true })

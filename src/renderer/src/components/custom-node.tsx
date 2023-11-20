@@ -7,6 +7,8 @@ interface CustomNodeProps {
 }
 
 function KuNode({ data }: CustomNodeProps) {
+  console.log({ data })
+
   const savingZone: string | null = useMemo(() => {
     const d = data.data ?? ''
     try {

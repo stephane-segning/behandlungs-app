@@ -2,8 +2,8 @@ import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm'
 
 @Entity({ name: 'patients' })
 export class PatientEntity {
-  @PrimaryGeneratedColumn('uuid', { name: 'pat_id' })
-  id: string
+  @PrimaryGeneratedColumn('increment', { name: 'pat_id' })
+  id: number
 
   @Column({ name: 'id_number', type: 'varchar' })
   idNumber: string

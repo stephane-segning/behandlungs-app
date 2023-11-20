@@ -4,7 +4,7 @@ import { FlowElementTypeEntity } from './flow-element-type.entity'
 
 @Entity({ name: 'flow_chart_elements' })
 export class FlowChartElementEntity {
-  @PrimaryGeneratedColumn('uuid', { name: 'flow_id' })
+  @PrimaryGeneratedColumn('increment', { name: 'flow_id' })
   id: string
 
   @OneToMany(() => FlowEdgeEntity, (flowEdge) => flowEdge.startNode)

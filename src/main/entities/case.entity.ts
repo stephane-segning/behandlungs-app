@@ -4,8 +4,8 @@ import { PatientEntity } from './patient.entity'
 
 @Entity({ name: 'cases' })
 export class CaseEntity {
-  @PrimaryGeneratedColumn('uuid', { name: 'case_id' })
-  id: string
+  @PrimaryGeneratedColumn('increment', { name: 'case_id' })
+  id: number
 
   @OneToMany(() => CaseStepEntity, (caseStep) => caseStep.caseE, { lazy: true })
   steps: CaseStepEntity[]
