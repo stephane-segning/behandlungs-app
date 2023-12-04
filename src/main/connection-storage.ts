@@ -32,7 +32,8 @@ export function initConnectionStore(): void {
     log.info('add-connection')
     const values = getAll(store)
     for (const [key, conn] of values) {
-      if (_.isEqual(conn, connection)) {
+      if (_.isEqual({ ...conn, id: undefined }, { ...connection, id: undefined })) {
+        log.debug('add-connection', ':', 'found existing connection')
         return key
       }
     }
