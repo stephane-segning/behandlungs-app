@@ -60,7 +60,7 @@ export function CasePage() {
                 <td>{cazz.patient?.id}</td>
                 <td>{cazz.arrivedBy}</td>
                 <td>
-                  <Link to={`/${cazz.id}`} className="btn btn-sm">
+                  <Link to={`/${cazz.id}`} className="btn btn-sm btn-circle">
                     <ArrowRight />
                   </Link>
                 </td>
