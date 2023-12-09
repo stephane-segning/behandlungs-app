@@ -6,21 +6,27 @@ interface CustomNodeProps {
   data: { flow: any; data?: Record<string, any> }
 }
 
+const translations = {
+  speicher_ort: 'Speicherort',
+  data: 'Daten'
+}
+
 function KuNode({ data }: CustomNodeProps) {
   const parsedData = data.data ?? {}
 
-  const savingZone: string | null = useMemo(
-    () => parsedData.save_zone ?? null,
-    [parsedData.save_zone]
-  )
+  const isDigital: string | null = useMemo(() => {
+    const savingZone = parsedData.speicher_ort ?? null
+    if (!savingZone) return null
+    if (savingZone.includes('digital')) return 'digital'
+    if (savingZone.includes('kis')) return 'digital'
+    return 'physical'
+  }, [parsedData.speicher_ort])
 
   const metaData = useMemo(() => {
     return Object.keys(parsedData).map((key) => (
-      <div className="w-auto" key={`json-item-key-${key}`}>
-        <div className="mt-2">
-          {key} <kbd className="kbd kbd-sm">{parsedData[key]}</kbd>
-        </div>
-      </div>
+      <li key={`json-item-key-${key}`}>
+        {translations[key] ?? key} <kbd className="kbd kbd-sm">{parsedData[key]}</kbd>
+      </li>
     ))
   }, [parsedData])
 
@@ -30,18 +36,18 @@ function KuNode({ data }: CustomNodeProps) {
 
   return (
     <div className="px-4 py-2 m-4 shadow-md rounded-md bg-white">
-      <div className="flex">
-        {savingZone === 'digital' && (
+      <div className="flex items-center">
+        {isDigital === 'digital' && (
           <div className="rounded-full w-12 h-12 flex justify-center items-center bg-green-500">
             <ThumbsUp className="w-6 h-6 text-white" />
           </div>
         )}
-        {savingZone && savingZone !== 'digital' && (
+        {isDigital === 'physical' && (
           <div className="rounded-full w-12 h-12 flex justify-center items-center bg-red-500">
             <ThumbsDown className="w-6 h-6 text-white" />
           </div>
         )}
-        {!savingZone && (
+        {!isDigital && (
           <div className="rounded-full w-12 h-12 flex justify-center items-center bg-primary-content">
             <List className="w-6 h-6 text-white" />
           </div>
@@ -49,7 +55,8 @@ function KuNode({ data }: CustomNodeProps) {
         <div className="ml-2">
           <div className="text-lg font-bold">{data.flow?.name}</div>
           {!isSameName && <div className="text-gray-500">{data.flow?.type?.name}</div>}
-          {metaData}
+
+          {metaData && <ul className="list-disc ml-5">{metaData}</ul>}
         </div>
       </div>
 

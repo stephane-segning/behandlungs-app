@@ -5,6 +5,8 @@ import { useNavigate } from 'react-router-dom'
 import { useEffect } from 'react'
 import { DatabaseConnectionListItem } from '../components/database-connection-list-item'
 
+const isProd = import.meta.env.PROD
+
 export const LoginPage = () => {
   const { connect, disconnect, connections, removeConnection, getConnections } = useDb()
   const navigate = useNavigate()
@@ -30,20 +32,24 @@ export const LoginPage = () => {
         <h1 className="text-4xl pb-4 font-bold text-center">DB Daten</h1>
         <DatabaseLoginForm onSubmit={login} />
 
-        <div className="divider" />
-        <div className="flex flex-col items-center">
-          <h2 className="text-xl font-bold">Verbindungen</h2>
-          <ul className="list-none list-inside">
-            {connections.map((connection, index) => (
-              <DatabaseConnectionListItem
-                key={index + '-conn-' + connection.id}
-                {...connection}
-                onClick={login}
-                onDelete={() => deleteOne(connection)}
-              />
-            ))}
-          </ul>
-        </div>
+        {!isProd && (
+          <>
+            <div className="divider" />
+            <div className="flex flex-col items-center">
+              <h2 className="text-xl font-bold">Verbindungen</h2>
+              <ul className="list-none list-inside">
+                {connections.map((connection, index) => (
+                  <DatabaseConnectionListItem
+                    key={index + '-conn-' + connection.id}
+                    {...connection}
+                    onClick={login}
+                    onDelete={() => deleteOne(connection)}
+                  />
+                ))}
+              </ul>
+            </div>
+          </>
+        )}
       </div>
     </div>
   )

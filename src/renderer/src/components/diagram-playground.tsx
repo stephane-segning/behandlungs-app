@@ -1,11 +1,9 @@
 import 'reactflow/dist/style.css'
 import {
-  addEdge,
   applyNodeChanges,
   Background,
   BackgroundVariant,
   ConnectionMode,
-  MarkerType,
   Panel,
   ReactFlow,
   useReactFlow
@@ -61,10 +59,6 @@ export function DiagramPlayground(props: DiagramPlaygroundProps) {
     (changes) => setNodes((nds) => applyNodeChanges(changes, nds)),
     []
   )
-  // const onEdgesChange = useCallback(
-  //   (changes) => setEdges((eds) => applyEdgeChanges(changes, eds)),
-  //   []
-  // )
 
   const onLayout = useCallback(
     (direction) => {
@@ -93,18 +87,9 @@ export function DiagramPlayground(props: DiagramPlaygroundProps) {
     }
   }, [layouted, onLayout])
 
-  const onConnect = useCallback(
-    (params) =>
-      setEdges((eds) =>
-        addEdge({ ...params, type: 'floating', markerEnd: { type: MarkerType.Arrow } }, eds)
-      ),
-    []
-  )
-
   return (
     <div className="w-full h-[calc(100vh-64px)]">
       <ReactFlow
-        onConnect={onConnect}
         nodes={nodes}
         onNodesChange={onNodesChange}
         edges={edges}
