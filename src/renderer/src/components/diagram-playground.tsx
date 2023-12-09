@@ -1,7 +1,6 @@
 import 'reactflow/dist/style.css'
 import {
   addEdge,
-  applyEdgeChanges,
   applyNodeChanges,
   Background,
   BackgroundVariant,
@@ -62,10 +61,10 @@ export function DiagramPlayground(props: DiagramPlaygroundProps) {
     (changes) => setNodes((nds) => applyNodeChanges(changes, nds)),
     []
   )
-  const onEdgesChange = useCallback(
-    (changes) => setEdges((eds) => applyEdgeChanges(changes, eds)),
-    []
-  )
+  // const onEdgesChange = useCallback(
+  //   (changes) => setEdges((eds) => applyEdgeChanges(changes, eds)),
+  //   []
+  // )
 
   const onLayout = useCallback(
     (direction) => {
@@ -109,7 +108,6 @@ export function DiagramPlayground(props: DiagramPlaygroundProps) {
         nodes={nodes}
         onNodesChange={onNodesChange}
         edges={edges}
-        onEdgesChange={onEdgesChange}
         nodeTypes={nodeTypes}
         edgeTypes={edgeTypes}
         fitView
@@ -118,16 +116,16 @@ export function DiagramPlayground(props: DiagramPlaygroundProps) {
       >
         <Background variant={BackgroundVariant.Dots} />
         <Panel position="bottom-left">
-          <button className="btn btn-sm btn-ghost" onClick={() => fitView()}>
+          <button className="btn btn-sm btn-ghost btn-circle" onClick={() => fitView()}>
             <Maximize />
           </button>
-          <button className="btn btn-sm btn-ghost" onClick={() => onLayout('TB')}>
+          <button className="btn btn-ghost btn-circle" onClick={() => onLayout('TB')}>
             <Target />
           </button>
-          <button className="btn btn-sm btn-ghost" onClick={() => zoomIn({ duration: 800 })}>
+          <button className="btn btn-ghost btn-circle" onClick={() => zoomIn({ duration: 800 })}>
             <ZoomIn />
           </button>
-          <button className="btn btn-sm btn-ghost" onClick={() => zoomOut({ duration: 800 })}>
+          <button className="btn btn-ghost btn-circle" onClick={() => zoomOut({ duration: 800 })}>
             <ZoomOut />
           </button>
         </Panel>

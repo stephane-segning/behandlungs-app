@@ -15,6 +15,6 @@ export class CaseStepEntity {
   @JoinColumn({ name: 'flow_id' })
   flowChart: FlowChartElementEntity
 
-  @Column('text', { nullable: false })
-  data: string
+  @Column('json', { nullable: false, default: '{}' })
+  data: Record<string, any>
 }
