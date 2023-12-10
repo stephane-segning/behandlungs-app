@@ -1,0 +1,90 @@
+name: Build and Release Electron App
+
+on:
+  push:
+    branches:
+      - main # or any other branch you want
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        platform: [win, mac, linux]
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14' # Specify your Node.js version
+          cache: 'pnpm' # Enable caching for pnpm
+
+      - name: Install pnpm
+        run: npm install -g pnpm
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Build and package app for ${{ matrix.platform }}
+        run: pnpm run build:${{ matrix.platform }}
+
+      - name: Zip dist folder
+        run: zip -r dist-${{ matrix.platform }}.zip dist/
+
+      - name: Upload dist ZIP to Artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: dist-${{ matrix.platform }}
+          path: dist-${{ matrix.platform }}.zip
+
+  release:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/download-artifact@v2
+
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: Release ${{ github.ref }}
+          draft: false
+          prerelease: false
+
+      - name: Upload Release Asset for Windows
+        if: contains(github.ref, 'win')
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./dist-win.zip
+          asset_name: dist-win.zip
+          asset_content_type: application/zip
+
+      - name: Upload Release Asset for Mac
+        if: contains(github.ref, 'mac')
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./dist-mac.zip
+          asset_name: dist-mac.zip
+          asset_content_type: application/zip
+
+      - name: Upload Release Asset for Linux
+        if: contains(github.ref, 'linux')
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./dist-linux.zip
+          asset_name: dist-linux.zip
+          asset_content_type: application/zip

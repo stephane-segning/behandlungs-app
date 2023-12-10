@@ -1,5 +1,5 @@
-appId: com.electron.app
-productName: behandlung-app
+appId: ma.mikam.desktop.behandlung
+productName: Behandlung App
 directories:
   buildResources: build
 files:
@@ -33,11 +33,11 @@ linux:
     - AppImage
     - snap
     - deb
-  maintainer: electronjs.org
+  maintainer: sema.team
   category: Utility
 appImage:
   artifactName: ${name}-${version}.${ext}
 npmRebuild: false
 publish:
   provider: generic
-  url: https://example.com/auto-updates
+  url: https://sema.team.com/auto-updates
