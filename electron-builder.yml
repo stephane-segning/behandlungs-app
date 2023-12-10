@@ -11,8 +11,10 @@ files:
   - '!{tsconfig.json,tsconfig.node.json,tsconfig.web.json}'
 asarUnpack:
   - resources/**
+  - node_modules/sqlite3
 win:
   executableName: behandlung-app
+  target: portable
 nsis:
   artifactName: ${name}-${version}-setup.${ext}
   shortcutName: ${productName}
