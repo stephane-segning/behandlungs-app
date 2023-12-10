@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        platform: [win, linux]
+        platform: [win, mac, linux]
         node-version: [20]
     steps:
       - uses: actions/checkout@v3
