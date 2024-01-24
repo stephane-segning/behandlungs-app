@@ -42,7 +42,7 @@ jobs:
       - name: Build and package app for ${{ matrix.platform }}
         run: pnpm run build:${{ matrix.platform }}
 
-      - name: Upload dist ZIP to Artifact
+      - name: Upload dist to Artifact
         uses: actions/upload-artifact@v2
         with:
           name: dist
@@ -54,18 +54,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: actions/download-artifact@v2
-
-      - name: Create Release
-        id: create_release
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: ${{ github.ref }}
-          release_name: Release ${{ github.ref }}
-          draft: false
-          prerelease: false
-
+          name: dist
+          path: dist
       - uses: ncipollo/release-action@v1
         with:
           artifacts: "dist/*"
