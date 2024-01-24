@@ -24,8 +24,20 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache: 'pnpm'
 
+      - name: Install Wine on Windows
+        if: matrix.platform == 'win'
+        run: |
+          sudo dpkg --add-architecture i386
+          sudo apt-get update
+          sudo apt-get install wine64 wine32
+
       - name: Install dependencies
         run: pnpm install
+
+      - name: Install Wine on Windows
+        if: matrix.platform == 'mac'
+        run: |
+          pnpm i -D dmg-license
 
       - name: Build and package app for ${{ matrix.platform }}
         run: pnpm run build:${{ matrix.platform }}
