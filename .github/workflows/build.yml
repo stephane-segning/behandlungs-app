@@ -24,7 +24,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache: 'pnpm'
 
-      - name: Install Wine on Windows
+      - name: Install wine for windows
         if: matrix.platform == 'win'
         run: |
           sudo dpkg --add-architecture i386
@@ -34,7 +34,7 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
-      - name: Install Wine on Windows
+      - name: Install dmg-license for mac
         if: matrix.platform == 'mac'
         run: |
           pnpm i -D dmg-license
@@ -60,6 +60,7 @@ jobs:
       - uses: ncipollo/release-action@v1
         with:
           artifacts: "dist/*"
+          tag: v1.0.0
           body: |
             Release ${{ github.ref }}
 
