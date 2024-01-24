@@ -72,6 +72,11 @@ dependencies:
     specifier: ^1.3.2
     version: 1.3.2
 
+optionalDependencies:
+  dmg-license:
+    specifier: ^1.0.11
+    version: 1.0.11
+
 devDependencies:
   '@electron-toolkit/eslint-config-prettier':
     specifier: ^1.0.1
@@ -1426,7 +1431,6 @@ packages:
     dependencies:
       '@types/node': 18.18.9
       xmlbuilder: 15.1.1
-    dev: true
     optional: true
 
   /@types/prop-types@15.7.10:
@@ -1469,7 +1473,6 @@ packages:
   /@types/verror@1.10.9:
     resolution: {integrity: sha512-MLx9Z+9lGzwEuW16ubGeNkpBDE84RpB/NyGgg6z2BTpWzKkGU451cAY3UkUzZEp72RHF585oJ3V8JVNqIplcAQ==}
     requiresBuild: true
-    dev: true
     optional: true
 
   /@types/yauzl@2.10.3:
@@ -1634,7 +1637,6 @@ packages:
     resolution: {integrity: sha512-2WALfTl4xo2SkGCYRt6rDTFfk9R1czmBvUQy12gK2KuRKIpWEhcbbzy8EZXtz/jkRqHX8bFEc6FC1HjX4TUWYw==}
     engines: {node: '>=10.0.0'}
     requiresBuild: true
-    dev: true
 
   /abbrev@1.1.1:
     resolution: {integrity: sha512-nne9/IiQ/hzIhY6pdDnbBtz7DjPTKrY00P/zvPSm5pOFkl6xuGrGnXn/VtTNNfNtAfZ9/1RtehkszU9qcTii0Q==}
@@ -1711,7 +1713,6 @@ packages:
       fast-json-stable-stringify: 2.1.0
       json-schema-traverse: 0.4.1
       uri-js: 4.4.1
-    dev: true
 
   /ajv@7.2.4:
     resolution: {integrity: sha512-nBeQgg/ZZA3u3SYxyaDvpvDtgZ/EZPF547ARgZBrG9Bhu1vKDwAIjtIf+sDtJUKa2zOcEbmRLBRSyMraS/Oy1A==}
@@ -1906,14 +1907,12 @@ packages:
     resolution: {integrity: sha512-NfJ4UzBCcQGLDlQq7nHxH+tv3kyZ0hHQqF5BO6J7tNJeP5do1llPr8dZ8zHonfhAu0PHAdMkSo+8o0wxg9lZWw==}
     engines: {node: '>=0.8'}
     requiresBuild: true
-    dev: true
     optional: true
 
   /astral-regex@2.0.0:
     resolution: {integrity: sha512-Z7tMw1ytTXt5jqMcOP+OQteU1VuNK9Y02uuJtKQ1Sv69jXQKKg5cibLwGJow8yzZP+eAc18EmLGPal0bp36rvQ==}
     engines: {node: '>=8'}
     requiresBuild: true
-    dev: true
     optional: true
 
   /async-exit-hook@2.0.1:
@@ -2061,7 +2060,6 @@ packages:
     dependencies:
       base64-js: 1.5.1
       ieee754: 1.2.1
-    dev: true
     optional: true
 
   /buffer@6.0.3:
@@ -2256,7 +2254,6 @@ packages:
     dependencies:
       slice-ansi: 3.0.0
       string-width: 4.2.3
-    dev: true
     optional: true
 
   /cliui@7.0.4:
@@ -2373,7 +2370,6 @@ packages:
     requiresBuild: true
     dependencies:
       buffer: 5.7.1
-    dev: true
     optional: true
 
   /create-require@1.1.1:
@@ -2644,7 +2640,6 @@ packages:
       plist: 3.1.0
       smart-buffer: 4.2.0
       verror: 1.10.1
-    dev: true
     optional: true
 
   /doctrine@2.1.0:
@@ -3151,7 +3146,6 @@ packages:
     resolution: {integrity: sha512-Wrk35e8ydCKDj/ArClo1VrPVmN8zph5V4AtHwIuHhvMXsKf73UT3BOD+azBIW+3wOJ4FhEH7zyaJCFvChjYvMA==}
     engines: {'0': node >=0.6.0}
     requiresBuild: true
-    dev: true
     optional: true
 
   /fast-deep-equal@3.1.3:
@@ -3174,7 +3168,6 @@ packages:
 
   /fast-json-stable-stringify@2.1.0:
     resolution: {integrity: sha512-lhd/wF+Lk98HZoTCtlVraHtfh5XYijIjalXck7saUtuanSDyLMxnHhSXEDJqHxD7msR8D0uCmqlkwjCV8xvwHw==}
-    dev: true
 
   /fast-levenshtein@2.0.6:
     resolution: {integrity: sha512-DCXu6Ifhqcks7TZKY3Hxp3y6qphY5SJZmrWMDrKcERSOXWQdMhU9Ig/PYrzyw/ul9jOIyh0N4M0tbC5hodg8dw==}
@@ -3651,7 +3644,6 @@ packages:
     dependencies:
       cli-truncate: 2.1.0
       node-addon-api: 1.7.2
-    dev: true
     optional: true
 
   /iconv-lite@0.6.3:
@@ -4009,7 +4001,6 @@ packages:
 
   /json-schema-traverse@0.4.1:
     resolution: {integrity: sha512-xbbCH5dCYU5T8LcEhhuh7HJ88HXuW3qsI3Y0zOZFKfZEHcpWiHU/Jxzk629Brsab/mMiHQti9wMP+845RPe3Vg==}
-    dev: true
 
   /json-schema-traverse@1.0.0:
     resolution: {integrity: sha512-NM8/P9n3XjXhIZn1lLhkFaACTOURQXjWhV4BA/RnOv8xvgqtqpAX9IO4mRQxSx1Rlo4tqzeqb0sOlruaOy3dug==}
@@ -4388,7 +4379,6 @@ packages:
   /node-addon-api@1.7.2:
     resolution: {integrity: sha512-ibPK3iA+vaY1eEjESkQkM0BbCqFOaZMiXRTtdB0u7b4djtY6JnsjvPdUHVMg6xQt3B8fpTTWHI9A+ADjM9frzg==}
     requiresBuild: true
-    dev: true
     optional: true
 
   /node-addon-api@4.3.0:
@@ -4795,7 +4785,6 @@ packages:
       '@xmldom/xmldom': 0.8.10
       base64-js: 1.5.1
       xmlbuilder: 15.1.1
-    dev: true
 
   /postcss-import@15.1.0(postcss@8.4.31):
     resolution: {integrity: sha512-hpr+J05B2FVYUAXHeK1YyI267J/dDDhMU6B6civm8hSY1jYJnBXxzKDKDswzJmtLHryrjhnDjqqp/49t8FALew==}
@@ -5405,7 +5394,6 @@ packages:
       ansi-styles: 4.3.0
       astral-regex: 2.0.0
       is-fullwidth-code-point: 3.0.0
-    dev: true
     optional: true
 
   /smart-buffer@4.2.0:
@@ -6036,7 +6024,6 @@ packages:
       assert-plus: 1.0.0
       core-util-is: 1.0.2
       extsprintf: 1.4.1
-    dev: true
     optional: true
 
   /vite@4.5.0(@types/node@18.18.9):
@@ -6162,7 +6149,6 @@ packages:
     resolution: {integrity: sha512-yMqGBqtXyeN1e3TGYvgNgDVZ3j84W4cwkOXQswghol6APgZWaff9lnbvN7MHYJOiXsvGPXtjTYJEiC9J2wv9Eg==}
     engines: {node: '>=8.0'}
     requiresBuild: true
-    dev: true
 
   /xtend@4.0.2:
     resolution: {integrity: sha512-LKYU1iAXJXUgAXn9URjiu+MWhyUXHsvfp7mcuYm9dSUKK0/CjtrUwFAxD82/mCWbtLsGjFIad0wIsod4zrTAEQ==}
